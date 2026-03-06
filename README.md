@@ -101,31 +101,33 @@ Decision logic is exposed via REST API and can be consumed by:
 
 ### 1️⃣ Individual execution
 
-POST /run-mcda
+`POST /run-mcda`
 
 Executes an MCDA method for a single evaluator.
 
 **Input:**
-
+```
 {
   "dataset": [[...]],
   "weights": [...],
   "method": "promethee"
 }
+```
 
 ### 2️⃣ Group decision
 
-POST /aggregate-mcda
+`POST /aggregate-mcda`
 
 Executes aggregation of multiple evaluators.
 
 **Input:**
-
+```
 {
   "evaluations": [...],
   "evaluator_weights": [...],
   "method": "electre"
 }
+```
 
 ---
 
@@ -144,32 +146,42 @@ Executes aggregation of multiple evaluators.
 
 ### 1️⃣ Clone the project
 
+```sh
 git clone https://github.com/yourusername/mcda-api
+
 cd mcda-api
+```
 
 ### 2️⃣ Create virtual environment
 
+```sh
 python -m venv venv
+```
 
 ### 3️⃣ Activate environment
-
-**Windows:**
+```sh
+Windows:
 
 venv\Scripts\activate
 
-**Linux / Mac:**
+Linux / Mac:
 
 source venv/bin/activate
+```
 
 ### 4️⃣ Install dependencies
-
+```sh
 pip install -r requirements.txt
-
+```
 ### 5️⃣ Run the API
+
+```sh
+cd app
 
 uvicorn app.main:app --reload
 
 Access the interactive documentation at: http://localhost:8000/docs
+```
 
 ---
 
@@ -207,5 +219,6 @@ MIT License
 ## 📬 Contact
 
 For questions, suggestions or contributions, please get in touch or open an issue in the repository.
+
 
 **Developed with 💙 to support more structured and transparent decision-making.**
