@@ -159,13 +159,13 @@ python -m venv venv
 ```
 
 ### 3️⃣ Activate environment
+
+Windows
 ```sh
-Windows:
-
 venv\Scripts\activate
-
-Linux / Mac:
-
+```
+Linux / Mac
+```sh
 source venv/bin/activate
 ```
 
@@ -179,8 +179,26 @@ pip install -r requirements.txt
 cd app
 
 uvicorn app.main:app --reload
+```
+Then open:
+```sh
+ http://localhost:8000/docs
+```
+to access the **interactive API documentation**.
 
-Access the interactive documentation at: http://localhost:8000/docs
+### 6️⃣ Run the tests or examples
+
+Open another terminal and activate the environment again.
+
+Run tests:
+```sh 
+cd tests 
+python run tests.py
+```
+Run examples:
+```sh 
+cd Examples
+python run example.py
 ```
 
 ---
@@ -222,3 +240,4 @@ For questions, suggestions or contributions, please get in touch or open an issu
 
 
 **Developed with 💙 to support more structured and transparent decision-making.**
+
