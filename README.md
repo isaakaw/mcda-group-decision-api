@@ -230,7 +230,7 @@ with a modern architecture based on RESTful microservices.
 
 ## 📄 License
 
-MIT License
+GPLv3
 
 ---
 
@@ -240,4 +240,5 @@ For questions, suggestions or contributions, please get in touch or open an issu
 
 
 **Developed with 💙 to support more structured and transparent decision-making.**
+
 
