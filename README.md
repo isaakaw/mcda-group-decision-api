@@ -7,7 +7,10 @@
 
 RESTful API for **Multi-Criteria Decision Analysis (MCDA)** with support for **PROMETHEE II** and **ELECTRE II**, including **multi-evaluator aggregation** for group decision support.
 
-This project implements a **Decision-as-a-Service** model, allowing external systems to perform multi-criteria analysis through HTTP requests.
+Implements a **Decision-as-a-Service** model, allowing external systems to perform multi-criteria analysis through HTTP requests.
+
+This project was developed as the final deliverable for the PIBIT project presented at the 18th seminar, under the theme:
+"Intelligent Agent-Based Decision Support Tools for Selecting Innovative Business Projects in Pre-Incubators"
 
 ---
 
@@ -69,14 +72,16 @@ The process occurs in two stages:
 ### Stage 1 – Individual Evaluation
 
 Each evaluator runs an MCDA method separately on their assessments.
-
+```
 ranking_j = MCDA(dataset_j, weights_j)
+```
 
 ### Stage 2 – Collective Aggregation
 
 Individual scores are organized into a new decision matrix:
-
+```
 Alternatives × Evaluators
+```
 
 The MCDA method is run again using **evaluator weights**, producing a **consolidated final ranking**.
 
