@@ -14,6 +14,7 @@ class MCDARequest(BaseModel):
     weights: List[float]
     algorithm: str
     alternatives: List[str]
+    return_internal_scores: bool = False
 
 class EvaluatorResult(BaseModel):
     evaluator_name: str
@@ -36,10 +37,16 @@ def run_mcda(request: MCDARequest):
         algorithm=request.algorithm,
         dataset=dataset_np,
         weights=request.weights,
-        alternative_names_ordered=request.alternatives
+        alternative_names_ordered=request.alternatives,
+        return_internal_scores=request.return_internal_scores
     )
     if error:
         raise HTTPException(status_code=400, detail=error)
+    if request.return_internal_scores:
+        return {
+            "success": True,
+            "internal_scores": ranking.tolist()
+        }
     return {"success": True, "ranking": ranking}
 
 
