@@ -13,6 +13,7 @@ def calculate_dynamic_promethee_params(dataset: np.ndarray):
         Q.append(float(q)); P.append(float(p)); S.append(0.0); F.append("t5")
     return Q, P, S, F
 
+#Por enquanto deixei de lado esses cáculos pra posteriormente fazer mais testes com ele
 def calculate_dynamic_electre_params(dataset: np.ndarray) -> Dict[str, float]:
     std_devs = [np.std(dataset[:, j]) for j in range(dataset.shape[1])]
     valid = [s for s in std_devs if s > 0]
@@ -51,7 +52,15 @@ def run_mcda_calculation(
             return results, None
 
         elif algorithm == "electre_ii":
-            params = calculate_dynamic_electre_params(dataset)
+            params = {
+                "c_minus": 0.65,
+                "c_zero": 0.75,
+                "c_plus": 0.85,
+                "d_minus": 0.25,
+                "d_plus": 0.50
+            }
+            
+            #params = calculate_dynamic_electre_params(dataset)
 
             _, _, _, _, rank_D, rank_A, _, _ = electre_ii(dataset, W=weights_np, **params, graph=False)
             
@@ -72,7 +81,10 @@ def run_mcda_calculation(
                         idx = int(alt_name[1:]) - 1
                         ranks_v2[idx] = rank
                         
-                internal_scores = ranks_v2 - ranks_v1
+                #Transformação E2        
+                internal_scores = (
+                    num_alt - ((ranks_v1 + ranks_v2) / 2)
+                )
                 return internal_scores, None
             
             # Para o ranking final, considera o rank_D como o principal.
